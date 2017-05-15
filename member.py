@@ -1,6 +1,6 @@
 import generator
 import random
-from naming.generator import NameGenerator
+from generator.naming import NameGenerator
 
 nameGenerator = NameGenerator('member')
 

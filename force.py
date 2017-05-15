@@ -3,7 +3,7 @@ import random
 import officer
 from group import group
 
-from naming.generator import NameGenerator
+from generator.naming import NameGenerator
 
 nameGenerator = NameGenerator('force')
 

@@ -3,23 +3,22 @@ import os.path
 
 class NameGenerator:
 
-	PREFIX_FIRSTWORDS = 'naming/firstwords'
-	PREFIX_LASTWORDS = 'naming/lastwords'
+	PREFIX_FIRSTWORDS = 'generator/firstwords'
+	PREFIX_LASTWORDS = 'generator/lastwords'
 	SUFFIX_MEMBER = 'member'
 
-	def __init__ (self, type):
-		self.type = type
+	def __init__ (self, type=''):
+		self.__type = type
 		self.__firstwords = self.readWords(self.PREFIX_FIRSTWORDS)
 		self.__lastwords = self.readWords(self.PREFIX_LASTWORDS)
-		self.__businessTypes = ["Taxis","Laundry","Barbers","Shipping","Bonds","Delivery","Pizza Parlor","Taco Shack","Real Estate","Printing Company","Tourist Trap","Ice Cream Plaza"]
 
 	def readWords(self, preffix):
 		words = []
 		filename = preffix
-		if not os.path.isfile(preffix + self.type):
+		if self.__type == '' or not os.path.isfile(preffix + self.__type):
 			filename += self.SUFFIX_MEMBER
 		else:
-			filename += self.type
+			filename += self.__type
 
 		with open(filename) as wordsFile:
 			for word in wordsFile:
@@ -27,7 +26,13 @@ class NameGenerator:
 		return words
 
 	def generate(self):
-		return self.randomWord(self.__firstwords) + " " + self.randomWord(self.__lastwords)
+		return self.generateFirstName() + " " + self.generateLastName()
+
+	def generateFirstName(self):
+		return self.randomWord(self.__firstwords)
+
+	def generateLastName(self):
+		return self.randomWord(self.__lastwords)
 	
 	def randomWord(self, words=[]):
 		return words[random.randint(0, len(words) - 1)]
