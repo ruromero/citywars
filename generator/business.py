@@ -17,4 +17,4 @@ class BusinessGenerator:
 		return Business.TYPES[random.randint(0, len(Business.TYPES) - 1)]
 
 	def getRandomIncome(self):
-		return random.randint(BusinessGenerator.MIN_INCOME, self.MAX_INCOME)
+		return random.randint(BusinessGenerator.MIN_INCOME, BusinessGenerator.MAX_INCOME)
