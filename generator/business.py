@@ -1,5 +1,5 @@
 import random
-from naming import NameGenerator
+from generator.naming import NameGenerator
 from model.business import Business
 
 class BusinessGenerator:

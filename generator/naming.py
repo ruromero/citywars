@@ -22,12 +22,12 @@ class NameGenerator:
 			filename += self.__type
 
 		wordsFile = pkg_resources.resource_string('generator.resources', filename)
-		for word in wordsFile.split('\n'):
+		for word in wordsFile.decode().split('\n'):
 			words.append(word.rstrip())
 		return words
 
 	def generate(self):
-		return self.generateFirstName() + " " + self.generateLastName()
+		return '{} {}'.format(self.generateFirstName(), self.generateLastName())
 
 	def generateFirstName(self):
 		return self.randomWord(self.__firstwords)
